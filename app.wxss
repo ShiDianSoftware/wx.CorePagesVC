@@ -1,0 +1,4 @@
+/**app.wxss**/
+@import "/pages/FrameWorks/CorePagesVC/CorePagesVC.wxss";
+
+page{height:100%;}

@@ -1,0 +1,9 @@
+<!--Index.wxml-->
+
+<view class="content">
+  <view class="topView"></view>
+  <view class="mainView">
+     <include src="/pages/FrameWorks/CorePagesVC/CorePagesVC.wxml" />
+  </view>
+  <view class="bottomView"></view>
+</view>
