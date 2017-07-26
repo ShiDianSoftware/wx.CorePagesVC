@@ -1,7 +1,7 @@
 /* Index.wxss */
 .content{width: 100%; height: 100%; display: flex; flex-direction: column;}
 .topView{width: 100%; height: 40px; background: #eee; }
-.mainView{flex: 1; display: flex; flex-direction: column;}
+.mainView{flex: 1; display: flex; flex-direction: column; z-index: 1;}
 .bottomView{width: 100%; height: 60px; background: gray;}
 
 

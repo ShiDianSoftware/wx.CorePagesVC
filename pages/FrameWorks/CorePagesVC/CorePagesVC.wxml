@@ -1,30 +1,27 @@
 <!--CorePagesVC.wxml-->
-<view class="CorePVC" style="height:{{mainH}}px;">
 
+<template name="CorePagesVC_list">
   <view class="CorePVC_menu">
     <scroll-view class="CorePVC_menu_scroll" enable-back-to-top="false">
       <view class="CorePVC_menu_contentView">
-        <block wx:for="{{5}}" wx:for-index="idx">
-          <view class="CorePVC_menu_item" bindtap="clickItem" data-idx="{{idx}}">订单</view>
+        <block wx:for="{{menus}}" wx:for-index="idx">
+          <view class="CorePVC_menu_item" bindtap="clickItem" data-idx="{{idx}}">{{item}}</view>
         </block>
         <view animation="{{CorePVC_anim}}" class="CorePVC_lineView" style="left:{{CorePVC_lineLeft}}px; width:{{CorePVC_lineWidth}}px;"></view>
       </view>
     </scroll-view>
   </view>
-
   <view class="CorePVC_contentView">
-    <swiper bindchange="pageChangeAction" class="CorePVC_swiper" duration="250">
-      <block wx:for="{{5}}" wx:for-index="idx">
+    <swiper current="{{current}}" bindchange="pageChangeAction" class="CorePVC_swiper" duration="250">
+      <block wx:for="{{menus}}" wx:for-index="idx">
         <swiper-item class="CorePVC_item">
           <view class="CorePVC_contentItem">
-            <block wx:for="{{100}}" wx:for-index="idx">
-              <view >列表{{idx}}</view>
+            <block wx:for="{{menus}}" wx:for-index="idx">
+              <view class="cell">列表{{idx}}</view>
             </block>
           </view>
         </swiper-item>
       </block>
     </swiper>
-
   </view>
-
-</view>
+</template>

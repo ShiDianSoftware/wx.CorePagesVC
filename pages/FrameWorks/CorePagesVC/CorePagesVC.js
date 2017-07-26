@@ -9,18 +9,17 @@ CorePagesVC.offsetX = 0
 CorePagesVC.anim_creator = wx.createAnimation({
 
   transformOrigin: "50% 50% 0",
-  duration: 120,
+  duration: 50,
   timingFunction: "ease-out",
   delay: 0
-
 })
 
+CorePagesVC.menus=null
 
+CorePagesVC.showInVC = function(vc,menus){
 
-
-
-
-CorePagesVC.showInVC = function(vc,deltaH){
+  CorePagesVC.menus = menus
+  let count = menus.length
 
   vc.clickItem = function(e){
     
@@ -31,13 +30,13 @@ CorePagesVC.showInVC = function(vc,deltaH){
   vc.clickItemWithIndex = function(index){
 
     let screen_width = wx.getSystemInfoSync().windowWidth
-    let itemW = screen_width / 5
-    let charactorCount = 2
+    let itemW = screen_width / count
+    let charactorCount = CorePagesVC.menus[index].length
     let deltaW = 10
     let lineW = 30 / 2 * charactorCount + deltaW
     let x = itemW * index + (itemW - lineW) / 2
     CorePagesVC.anim_creator.left(x).width(lineW).step()
-    this.setData({ CorePVC_lineLeft: x, CorePVC_lineWidth: lineW, CorePVC_anim: CorePagesVC.anim_creator.export()})
+    this.setData({ CorePagesVC_data: { CorePVC_lineLeft: x, CorePVC_lineWidth: lineW, CorePVC_anim: CorePagesVC.anim_creator.export(), current: index, menus: menus} })
   }
   console.log("来了")
   //滚动开始
@@ -62,7 +61,7 @@ CorePagesVC.showInVC = function(vc,deltaH){
     let page = parseInt((offsetX / screen_width)+0.5)
 
   
-    this.setData({ scroll_id: page})
+    this.setData({ CorePagesVC_data:{scroll_id: page}})
     console.log(screen_width + "," + offsetX + "," + page)
 
   }
@@ -81,9 +80,6 @@ CorePagesVC.showInVC = function(vc,deltaH){
 
 
   vc.clickItemWithIndex(0)
-
-  let mainH = wx.getSystemInfoSync().windowHeight - deltaH
-  vc.setData({ mainH: mainH})
 }
 
 module.exports = CorePagesVC

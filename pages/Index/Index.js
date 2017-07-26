@@ -13,7 +13,7 @@ Page({
 
   onLoad: function(){
 
-    CorePagesVC.showInVC(this,100)
+    CorePagesVC.showInVC(this, ["全部", "发货中", "运输中", "完成"])
   }
 
 })
